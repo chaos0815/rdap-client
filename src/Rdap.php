@@ -281,7 +281,7 @@ final class Rdap {
      */
     private function getAndCreateResponse(string $search, array $service): RdapResponse {
         // check for slash as last character in the server name, if not, add it
-        if ($service[1][0]{strlen($service[1][0]) - 1} !== '/') {
+        if ($service[1][0][strlen($service[1][0]) - 1] !== '/') {
             $service[1][0] .= '/';
         }
         $rdap = $this->getResponse($service[1][0] . self::$protocols[$this->protocol][self::SEARCH] . $search, $search);
@@ -299,7 +299,7 @@ final class Rdap {
     }
 
     public function addTld($tld,$url) {
-        if ((strlen($tld)>0) && (strlen($url)>0)) {
+        if (($tld != '') && ($url != '')) {
             $this->extratlds[strtolower($tld)] = $url;
         }
     }
